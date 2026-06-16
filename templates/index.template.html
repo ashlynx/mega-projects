@@ -160,6 +160,10 @@ footer .sep{color:var(--line2)}
 footer a{color:#7d8aae;text-decoration:none}
 footer a:hover{color:var(--ink)}
 
+.regiongrid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.frow.sm{padding:8px 10px;font-size:12px}
+.frow.sm .nm{font-size:12px}
+.fil+.fil{margin-top:4px}
 /* ---------- mobile ---------- */
 .sbtoggle{display:none}
 @media (max-width:860px){
@@ -208,6 +212,18 @@ footer a:hover{color:var(--ink)}
       <div class="fil">
         <h3><span class="tri">▼</span> 分野で絞り込み</h3>
         <div id="filters"></div>
+      </div>
+      <div class="fil">
+        <h3><span class="tri">▼</span> 実現可能性で絞り込み</h3>
+        <div id="filtersFeas"></div>
+      </div>
+      <div class="fil">
+        <h3><span class="tri">▼</span> 事業規模で絞り込み</h3>
+        <div id="filtersTier"></div>
+      </div>
+      <div class="fil">
+        <h3><span class="tri">▼</span> 地方区分で絞り込み</h3>
+        <div id="filtersRegion" class="regiongrid"></div>
       </div>
       <div class="listwrap">
         <div class="listhd">プロジェクト一覧 <b id="listN">(0)</b></div>
@@ -260,6 +276,7 @@ const DATA_FB=__DATA_JSON__;
   try{ geo  = await (await fetch('data/japan.geojson',{cache:'no-store'})).json(); }
   catch(e){ geo = GEO_FB; }
   const CATS = data.categories, ROUTES = data.routes, P = data.projects, GEO = geo;
+  const FEAS = data.feas, TIERS = data.tiers, REGIONS = data.regions;
   P.forEach((p,i)=>p._i=i);
 
 /* ---------- map ---------- */
@@ -278,13 +295,19 @@ const mkLayer=L.layerGroup().addTo(map);
 
 /* ---------- state ---------- */
 const active=new Set(Object.keys(CATS));
+const activeFeas=new Set(Object.keys(FEAS));
+const activeTier=new Set(TIERS.map(t=>t.k));
+const activeRegion=new Set(REGIONS);
 let query="", selected=null;
 const markers={};
 
 function visible(p){
   if(!active.has(p.cat)) return false;
+  if(!activeFeas.has(p.feas)) return false;
+  if(!activeTier.has(p.tier)) return false;
+  if(!activeRegion.has(p.region)) return false;
   if(query){const q=query.toLowerCase();
-    if(!(p.name.toLowerCase().includes(q)||p.desc.toLowerCase().includes(q)||p.tags.join(" ").toLowerCase().includes(q))) return false;}
+    if(!(p.name.toLowerCase().includes(q)||p.desc.toLowerCase().includes(q)||p.proponent.toLowerCase().includes(q)||p.tags.join(" ").toLowerCase().includes(q))) return false;}
   return true;
 }
 
@@ -356,6 +379,21 @@ Object.entries(CATS).forEach(([k,v])=>{
     b.setAttribute('aria-pressed',active.has(k)); render(); };
   fbox.appendChild(b);
 });
+function buildToggles(boxId, items, activeSet, cls){
+  const box=document.getElementById(boxId);
+  items.forEach(it=>{
+    const b=document.createElement('button');
+    b.className='frow'+(cls?(' '+cls):''); b.setAttribute('aria-pressed','true');
+    if(it.c) b.style.setProperty('--c',it.c);
+    b.innerHTML=`<span class="dot"></span><span class="nm">${it.ja}</span><span class="ck">✓</span>`;
+    b.onclick=()=>{ activeSet.has(it.k)?activeSet.delete(it.k):activeSet.add(it.k);
+      b.setAttribute('aria-pressed',activeSet.has(it.k)); render(); };
+    box.appendChild(b);
+  });
+}
+buildToggles('filtersFeas', Object.entries(FEAS).map(([k,v])=>({k,ja:v.ja,c:v.c})), activeFeas);
+buildToggles('filtersTier', TIERS.map(t=>({k:t.k,ja:t.ja,c:'#7d8aae'})), activeTier);
+buildToggles('filtersRegion', REGIONS.map(r=>({k:r,ja:r,c:'#5d6985'})), activeRegion, 'sm');
 const lg=document.getElementById('legend');
 Object.values(CATS).forEach(v=>{ const d=document.createElement('div'); d.className='li';
   d.innerHTML=`<i style="background:${v.c};color:${v.c}"></i>${v.ja}`; lg.appendChild(d); });
