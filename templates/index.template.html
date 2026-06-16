@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>JAPAN MEGA-PROJECTS — 全国メガプロジェクト・可視化マップ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<style>
+:root{
+  --bg:#080c16; --panel:#0c1220; --panel2:#0f1626; --card:#121b2e; --cardhi:#16223a;
+  --line:#1b2740; --line2:#26344f; --ink:#eef2fb; --mut:#8a96b4; --dim:#5d6985;
+  --transit:#3fa3ff; --industry:#c45cf0; --energy:#34d39a; --tourism:#f7a83a;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);
+  font-family:"Noto Sans JP",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow:hidden}
+.app{display:flex;flex-direction:column;height:100vh;height:100dvh}
+
+/* ---------- top bar ---------- */
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding:12px 16px;background:var(--panel);border-bottom:1px solid var(--line);z-index:1200}
+.brand{display:flex;align-items:center;gap:11px;min-width:0}
+.logo{width:34px;height:34px;border-radius:9px;flex:none;display:grid;place-items:center;
+  background:linear-gradient(135deg,#2b6cff,#9b4dff);box-shadow:0 6px 18px -6px rgba(80,90,255,.6)}
+.logo svg{width:19px;height:19px}
+.brand .t1{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:17px;letter-spacing:.02em;line-height:1;
+  background:linear-gradient(90deg,#7fb0ff,#c79bff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.brand .t2{font-size:11px;color:var(--mut);margin-top:3px;letter-spacing:.02em}
+.stats{display:flex;gap:10px;flex:none}
+.stat{background:var(--panel2);border:1px solid var(--line);border-radius:11px;padding:7px 14px;text-align:right;min-width:96px}
+.stat .l{font-size:9.5px;color:var(--dim);letter-spacing:.08em}
+.stat .v{font-size:17px;font-weight:700;margin-top:2px;line-height:1}
+.stat .v.accent{background:linear-gradient(90deg,#5fe0a0,#3fa3ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* ---------- body ---------- */
+.body{flex:1;display:flex;min-height:0}
+.sidebar{width:340px;flex:none;background:var(--panel);border-right:1px solid var(--line);
+  display:flex;flex-direction:column;min-height:0}
+.search{position:relative;padding:14px 14px 10px}
+.search input{width:100%;background:var(--card);border:1px solid var(--line2);border-radius:10px;
+  color:var(--ink);font-size:13px;font-family:inherit;padding:10px 12px 10px 36px}
+.search input::placeholder{color:var(--dim)}
+.search input:focus{outline:none;border-color:#33538c}
+.search svg{position:absolute;left:26px;top:24px;width:15px;height:15px;color:var(--dim)}
+
+.fil{padding:4px 14px 8px}
+.fil h3{font-size:11px;color:var(--mut);font-weight:500;margin:8px 2px 9px;display:flex;align-items:center;gap:6px}
+.fil h3 .tri{color:var(--dim);font-size:9px}
+.frow{display:flex;align-items:center;gap:10px;width:100%;text-align:left;cursor:pointer;
+  background:var(--card);border:1px solid var(--line);border-left:3px solid var(--c);
+  border-radius:9px;padding:10px 12px;margin-bottom:7px;color:var(--ink);font-size:13px;font-weight:500;
+  transition:background .15s,opacity .15s}
+.frow:hover{background:var(--cardhi)}
+.frow .dot{width:9px;height:9px;border-radius:50%;background:var(--c);flex:none;box-shadow:0 0 8px var(--c)}
+.frow .nm{flex:1}
+.frow .ck{color:var(--c);font-size:13px;font-weight:700}
+.frow[aria-pressed="false"]{opacity:.42;border-left-color:var(--line2)}
+.frow[aria-pressed="false"] .dot{box-shadow:none;background:var(--dim)}
+.frow[aria-pressed="false"] .ck{visibility:hidden}
+.frow:focus-visible{outline:2px solid #3fa3ff;outline-offset:1px}
+
+.listwrap{flex:1;min-height:0;display:flex;flex-direction:column}
+.listhd{padding:6px 16px 8px;font-size:12px;color:var(--mut);font-weight:500}
+.listhd b{color:var(--ink)}
+.list{flex:1;overflow:auto;padding:0 12px 16px}
+.empty{color:var(--dim);font-size:13px;padding:18px 6px}
+.pcard{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--c);
+  border-radius:11px;padding:11px 12px;margin-bottom:9px;cursor:pointer;transition:background .15s,transform .05s}
+.pcard:hover{background:var(--cardhi)}
+.pcard:active{transform:scale(.995)}
+.pcard.sel{background:var(--cardhi);border-color:var(--c)}
+.pcard .top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.pcard .nm{font-size:13.5px;font-weight:700;line-height:1.3}
+.badge{font-size:9.5px;font-weight:500;padding:3px 7px;border-radius:6px;white-space:nowrap;flex:none;
+  background:#1a2640;color:var(--mut);border:1px solid var(--line2)}
+.pcard .ds{font-size:11.5px;color:var(--mut);line-height:1.55;margin-top:6px;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.pcard .ft{display:flex;align-items:baseline;gap:9px;margin-top:8px;flex-wrap:wrap}
+.pcard .bud{font-size:12px;font-weight:700;color:var(--c)}
+.pcard .tl{font-size:10.5px;color:var(--dim)}
+
+/* ---------- map ---------- */
+.mapwrap{flex:1;position:relative;min-height:0;background:#0a0f1c}
+#map{position:absolute;inset:0;background:#0a0f1c}
+.legend{position:absolute;right:12px;bottom:14px;z-index:600;background:rgba(12,18,32,.86);
+  border:1px solid var(--line2);border-radius:11px;padding:11px 13px;backdrop-filter:blur(6px)}
+.legend h4{margin:0 0 8px;font-size:10.5px;color:var(--mut);font-weight:500;letter-spacing:.04em}
+.legend .li{display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--ink);margin:5px 0}
+.legend .li i{width:9px;height:9px;border-radius:50%;box-shadow:0 0 7px currentColor}
+
+/* leaflet dark theming */
+.leaflet-container{background:#0a0f1c;font-family:inherit}
+.leaflet-control-zoom a{background:#13203a!important;color:#dce6ff!important;border-color:#2a3a5c!important}
+.leaflet-control-zoom a:hover{background:#1b2c4e!important}
+.leaflet-bar{border:1px solid #2a3a5c!important;box-shadow:0 4px 14px rgba(0,0,0,.5)!important}
+.leaflet-control-attribution{background:rgba(8,12,22,.7)!important;color:#5d6985!important;font-size:9px!important}
+.leaflet-control-attribution a{color:#7d8aae!important}
+.mk{stroke:#08101f;transition:stroke-width .12s}
+.mk.pulse{animation:mkp 2.6s ease-in-out infinite}
+@keyframes mkp{0%,100%{opacity:.9}50%{opacity:.55}}
+.routeline{filter:drop-shadow(0 0 5px currentColor)}
+
+/* ---------- modal ---------- */
+.scrim{position:fixed;inset:0;background:rgba(4,7,14,.62);backdrop-filter:blur(3px);z-index:2000;
+  display:none;align-items:center;justify-content:center;padding:20px}
+.scrim.open{display:flex}
+.modal{width:min(560px,100%);background:linear-gradient(180deg,#10192d,#0c1322);
+  border:1px solid var(--line2);border-radius:18px;box-shadow:0 30px 80px -20px rgba(0,0,0,.8);
+  padding:22px 24px 24px;position:relative;max-height:88vh;overflow:auto}
+.modal .x{position:absolute;top:14px;right:14px;width:30px;height:30px;border-radius:8px;cursor:pointer;
+  background:transparent;border:none;color:var(--mut);font-size:17px;line-height:1}
+.modal .x:hover{background:#1a2640;color:var(--ink)}
+.mbadges{display:flex;gap:8px;margin-bottom:12px}
+.cbadge{font-size:11px;font-weight:700;padding:5px 11px;border-radius:8px;color:#08101f}
+.sbadge{font-size:11px;font-weight:500;padding:5px 11px;border-radius:8px;background:#1a2640;color:var(--mut);border:1px solid var(--line2)}
+.modal h2{margin:0;font-size:23px;font-weight:900;line-height:1.25;letter-spacing:.01em}
+.modal .desc{color:#bcc7e4;font-size:13.5px;line-height:1.75;margin:12px 0 0}
+.infobox{background:#0c1322;border:1px solid var(--line);border-radius:12px;padding:6px 14px;margin-top:16px}
+.inforow{padding:11px 0;border-bottom:1px solid var(--line)}
+.inforow:last-child{border-bottom:none}
+.inforow .k{font-size:11px;color:var(--dim);display:flex;align-items:center;gap:6px}
+.inforow .v{font-size:14px;font-weight:700;margin-top:5px;color:var(--ink);line-height:1.4}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
+.tag{font-size:11px;color:var(--mut);background:#141d31;border:1px solid var(--line);border-radius:6px;padding:4px 9px}
+.golink{display:inline-flex;align-items:center;gap:8px;margin-top:18px;text-decoration:none;
+  background:linear-gradient(135deg,#3b6cff,#8b4dff);color:#fff;font-size:13px;font-weight:700;
+  padding:11px 16px;border-radius:10px;box-shadow:0 8px 22px -8px rgba(90,90,255,.7)}
+.golink:hover{filter:brightness(1.08)}
+.golink svg{width:14px;height:14px}
+
+/* ---------- house style: banner / tools / summary / footer ---------- */
+.banner{display:flex;align-items:center;gap:10px;padding:8px 16px;font-size:12.5px;
+  background:linear-gradient(90deg,#11203c,#0e1830);border-bottom:1px solid var(--line);color:#cdd8f3;z-index:1300}
+.banner .bz{color:#ffd75b;font-weight:700;flex:none}
+.banner .bt{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.banner .bt b{color:#fff}
+.banner .bx{flex:none;cursor:pointer;background:transparent;border:none;color:var(--mut);font-size:15px;line-height:1;padding:2px 6px;border-radius:6px}
+.banner .bx:hover{background:#1a2640;color:var(--ink)}
+.banner.hide{display:none}
+.toolbtns{display:flex;gap:8px;flex:none}
+.tbtn{display:inline-flex;align-items:center;gap:6px;background:var(--card);border:1px solid var(--line2);
+  color:#cdd8f3;font-size:12px;font-weight:500;font-family:inherit;padding:8px 12px;border-radius:9px;cursor:pointer;text-decoration:none;transition:background .15s}
+.tbtn:hover{background:var(--cardhi)}
+.summary{padding:12px 14px 4px;border-bottom:1px solid var(--line)}
+.summary .sh{display:flex;align-items:center;justify-content:space-between;cursor:pointer;
+  font-size:11px;color:var(--mut);font-weight:500;margin-bottom:10px}
+.summary .sh .tg{color:var(--dim);font-size:10px}
+.sgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;transition:all .2s}
+.summary.collapsed .sgrid{display:none}
+.sgrid .sc{background:var(--card);border:1px solid var(--line);border-top:2px solid var(--c);border-radius:9px;padding:8px 6px;text-align:center}
+.sgrid .sc .n{font-size:19px;font-weight:900;color:var(--c);line-height:1}
+.sgrid .sc .l{font-size:9px;color:var(--mut);margin-top:4px;line-height:1.2}
+footer{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;padding:7px 16px;
+  background:var(--panel);border-top:1px solid var(--line);font-size:10.5px;color:var(--dim);z-index:1200}
+footer .sep{color:var(--line2)}
+footer a{color:#7d8aae;text-decoration:none}
+footer a:hover{color:var(--ink)}
+
+/* ---------- mobile ---------- */
+.sbtoggle{display:none}
+@media (max-width:860px){
+  .stats .stat:first-child{display:none}
+  .body{flex-direction:column}
+  .sidebar{width:100%;height:46vh;border-right:none;border-bottom:1px solid var(--line);order:2}
+  .mapwrap{order:1;height:54vh;flex:none}
+  .modal{border-radius:16px;padding:18px}
+  .modal h2{font-size:20px}
+}
+@media (prefers-reduced-motion:reduce){.mk.pulse{animation:none}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="banner" id="banner">
+    <span class="bz">⚡ 全国メガプロジェクト統合</span>
+    <span class="bt" id="bannerTxt"></span>
+    <button class="bx" id="bannerX" aria-label="閉じる">✕</button>
+  </div>
+  <div class="topbar">
+    <div class="brand">
+      <span class="logo"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="12" r="2.4" fill="#fff"/></svg></span>
+      <div><div class="t1">🗾 全国メガプロジェクト・マップ</div><div class="t2">シン電力 内部資料 · 全国メガプロジェクト 可視化データベース</div></div>
+    </div>
+    <div class="toolbtns">
+      <button class="tbtn" id="btnSearch">🔍 統合検索</button>
+      <button class="tbtn" id="btnJson">📥 全データ JSON</button>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="l">対象プロジェクト</div><div class="v" id="stCount">—</div></div>
+      <div class="stat"><div class="l">総投資規模</div><div class="v accent" id="stSum">—</div></div>
+    </div>
+  </div>
+
+  <div class="body">
+    <aside class="sidebar">
+      <div class="summary" id="summary">
+        <div class="sh" id="summaryHd">📊 案件サマリ <span class="tg" id="summaryTg">▼</span></div>
+        <div class="sgrid" id="sgrid"></div>
+      </div>
+      <div class="search">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="m21 21-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <input id="q" type="search" placeholder="プロジェクトを検索…" aria-label="プロジェクトを検索">
+      </div>
+      <div class="fil">
+        <h3><span class="tri">▼</span> 分野で絞り込み</h3>
+        <div id="filters"></div>
+      </div>
+      <div class="listwrap">
+        <div class="listhd">プロジェクト一覧 <b id="listN">(0)</b></div>
+        <div class="list" id="list"></div>
+      </div>
+    </aside>
+    <div class="mapwrap">
+      <div id="map"></div>
+      <div class="legend">
+        <h4>分野カテゴリ</h4>
+        <div id="legend"></div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <span>最終更新: <span id="lastUpd"></span></span><span class="sep">·</span>
+    <span>データ出典: 各事業者・公表資料を基にした概算</span><span class="sep">·</span>
+    <span>Powered by Telegram Bot Intelligence</span><span class="sep">·</span>
+    <a href="https://github.com/ashlynx" target="_blank" rel="noopener">GitHub: ashlynx</a>
+  </footer>
+</div>
+
+<div class="scrim" id="scrim" role="dialog" aria-modal="true" aria-label="プロジェクト詳細">
+  <div class="modal" id="modal">
+    <button class="x" id="mx" aria-label="閉じる">✕</button>
+    <div class="mbadges"><span class="cbadge" id="mCat"></span><span class="sbadge" id="mStat"></span></div>
+    <h2 id="mName"></h2>
+    <p class="desc" id="mDesc"></p>
+    <div class="infobox">
+      <div class="inforow"><div class="k">▦ 予算・事業規模</div><div class="v" id="mBud"></div></div>
+      <div class="inforow"><div class="k">▤ 目標・開業時期</div><div class="v" id="mTl"></div></div>
+      <div class="inforow"><div class="k">▣ 推進主体</div><div class="v" id="mPr"></div></div>
+    </div>
+    <div class="tags" id="mTags"></div>
+    <a class="golink" id="mLink" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span id="mLinkT">公式情報を検索</span>
+    </a>
+  </div>
+</div>
+
+<script>
+const UPDATED="__UPDATED__";
+const GEO_FB=__GEO_JSON__;
+const DATA_FB=__DATA_JSON__;
+(async function(){
+  let data, geo;
+  try{ data = await (await fetch('data/mega_projects.json',{cache:'no-store'})).json(); }
+  catch(e){ data = DATA_FB; }
+  try{ geo  = await (await fetch('data/japan.geojson',{cache:'no-store'})).json(); }
+  catch(e){ geo = GEO_FB; }
+  const CATS = data.categories, ROUTES = data.routes, P = data.projects, GEO = geo;
+  P.forEach((p,i)=>p._i=i);
+
+/* ---------- map ---------- */
+const map = L.map('map',{zoomControl:false,attributionControl:true,minZoom:4,maxZoom:10,worldCopyJump:false})
+  .setView([37.9,137.6],5);
+L.control.zoom({position:'topright'}).addTo(map);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{
+  subdomains:'abcd',maxZoom:19,
+  attribution:'&copy; OpenStreetMap &copy; CARTO'
+}).addTo(map);
+// self-contained landmass overlay (works even if tiles are slow/blocked)
+L.geoJSON(GEO,{style:{color:'#2c3c5e',weight:.6,fillColor:'#101a2e',fillOpacity:.18}}).addTo(map);
+
+const routeLayer=L.layerGroup().addTo(map);
+const mkLayer=L.layerGroup().addTo(map);
+
+/* ---------- state ---------- */
+const active=new Set(Object.keys(CATS));
+let query="", selected=null;
+const markers={};
+
+function visible(p){
+  if(!active.has(p.cat)) return false;
+  if(query){const q=query.toLowerCase();
+    if(!(p.name.toLowerCase().includes(q)||p.desc.toLowerCase().includes(q)||p.tags.join(" ").toLowerCase().includes(q))) return false;}
+  return true;
+}
+
+function render(){
+  routeLayer.clearLayers(); mkLayer.clearLayers();
+  const vis=P.filter(visible);
+  // routes first (under markers)
+  vis.forEach(p=>{
+    if(p.route&&ROUTES[p.route]){
+      L.polyline(ROUTES[p.route],{color:CATS[p.cat].c,weight:3,opacity:.85,className:'routeline'})
+        .on('click',()=>open(p._i)).addTo(routeLayer);
+    }
+  });
+  vis.forEach(p=>{
+    const col=CATS[p.cat].c, big=selected===p._i;
+    const m=L.circleMarker(p.at,{radius:big?9:6.5,color:col,weight:big?2.4:1.6,
+      fillColor:col,fillOpacity:.95,className:'mk pulse'+(big?' sel':'')})
+      .on('click',()=>open(p._i));
+    m.bindTooltip(p.name,{direction:'top',offset:[0,-6],className:'mktip'});
+    m.addTo(mkLayer); markers[p._i]=m;
+  });
+  // stats + list
+  document.getElementById('stCount').textContent=vis.length;
+  const sum=vis.reduce((a,p)=>a+p.budN,0);
+  document.getElementById('stSum').textContent='約'+(Math.round(sum)).toLocaleString()+'兆円〜';
+  document.getElementById('listN').textContent='('+vis.length+')';
+  const L2=document.getElementById('list'); L2.innerHTML='';
+  if(!vis.length){L2.innerHTML='<div class="empty">条件に合うプロジェクトがありません</div>';return;}
+  vis.forEach(p=>{
+    const col=CATS[p.cat].c, el=document.createElement('div');
+    el.className='pcard'+(selected===p._i?' sel':''); el.style.setProperty('--c',col);
+    el.innerHTML=`<div class="top"><div class="nm">${p.name}</div><span class="badge">${p.status}</span></div>
+      <div class="ds">${p.desc}</div>
+      <div class="ft"><span class="bud">${p.bud}</span><span class="tl">${p.tl}</span></div>`;
+    el.onclick=()=>{ open(p._i); map.flyTo(p.at, Math.max(map.getZoom(),6), {duration:.6}); };
+    L2.appendChild(el);
+  });
+}
+
+/* ---------- modal ---------- */
+function open(i){
+  selected=i; const p=P[i], col=CATS[p.cat].c;
+  const cb=document.getElementById('mCat'); cb.textContent=CATS[p.cat].ja; cb.style.background=col;
+  document.getElementById('mStat').textContent=p.status;
+  document.getElementById('mName').textContent=p.name;
+  document.getElementById('mDesc').textContent=p.desc;
+  document.getElementById('mBud').textContent=p.bud;
+  document.getElementById('mTl').textContent=p.tl;
+  document.getElementById('mPr').textContent=p.pr;
+  document.getElementById('mTags').innerHTML=p.tags.map(t=>`<span class="tag">#${t}</span>`).join('');
+  const a=document.getElementById('mLink');
+  a.href=p.link; a.target='_blank';
+  document.getElementById('mLinkT').textContent=p.link_label;
+  document.getElementById('scrim').classList.add('open');
+  render();
+}
+function close(){ selected=null; document.getElementById('scrim').classList.remove('open'); render(); }
+document.getElementById('mx').onclick=close;
+document.getElementById('scrim').addEventListener('click',e=>{ if(e.target.id==='scrim') close(); });
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') close(); });
+
+/* ---------- filters + search ---------- */
+const fbox=document.getElementById('filters');
+Object.entries(CATS).forEach(([k,v])=>{
+  const b=document.createElement('button');
+  b.className='frow'; b.setAttribute('aria-pressed','true'); b.style.setProperty('--c',v.c);
+  b.innerHTML=`<span class="dot"></span><span class="nm">${v.ja}</span><span class="ck">✓</span>`;
+  b.onclick=()=>{ active.has(k)?active.delete(k):active.add(k);
+    b.setAttribute('aria-pressed',active.has(k)); render(); };
+  fbox.appendChild(b);
+});
+const lg=document.getElementById('legend');
+Object.values(CATS).forEach(v=>{ const d=document.createElement('div'); d.className='li';
+  d.innerHTML=`<i style="background:${v.c};color:${v.c}"></i>${v.ja}`; lg.appendChild(d); });
+document.getElementById('q').addEventListener('input',e=>{query=e.target.value.trim();render();});
+
+/* ---------- house-style chrome ---------- */
+const totalSum=Math.round(P.reduce((a,p)=>a+p.budN,0));
+const byCat=Object.keys(CATS).map(k=>({k,n:P.filter(p=>p.cat===k).length}));
+document.getElementById('bannerTxt').innerHTML=
+  `全 <b>${P.length}件</b> · `+byCat.map(c=>`${CATS[c.k].ja.split('・')[0]} ${c.n}`).join(' / ')+
+  ` · 総投資 <b>約${totalSum.toLocaleString()}兆円〜</b>`;
+document.getElementById('bannerX').onclick=()=>document.getElementById('banner').classList.add('hide');
+
+document.getElementById('sgrid').innerHTML=byCat.map(c=>{
+  const v=CATS[c.k];
+  return `<div class="sc" style="--c:${v.c}"><div class="n">${c.n}</div><div class="l">${v.ja.split('・')[0]}</div></div>`;
+}).join('');
+const summary=document.getElementById('summary');
+document.getElementById('summaryHd').onclick=()=>{
+  summary.classList.toggle('collapsed');
+  document.getElementById('summaryTg').textContent=summary.classList.contains('collapsed')?'▶':'▼';
+};
+
+document.getElementById('btnSearch').onclick=()=>{const q=document.getElementById('q');q.focus();q.scrollIntoView({block:'nearest'});};
+document.getElementById('btnJson').onclick=()=>{
+  const out=P.map(p=>({category:CATS[p.cat].ja,name:p.name,status:p.status,budget:p.bud,
+    budget_tn_yen:p.budN,timeline:p.tl,proponent:p.pr,tags:p.tags,lat:p.at[0],lng:p.at[1]}));
+  const blob=new Blob([JSON.stringify({updated:"2026-06-16",count:out.length,projects:out},null,2)],{type:"application/json"});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download='mega_projects.json';a.click();URL.revokeObjectURL(a.href);
+};
+document.getElementById('lastUpd').textContent=UPDATED;
+
+render();
+})();
+</script>
+</body>
+</html>

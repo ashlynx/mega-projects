@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>全国メガプロジェクト 統合検索 — シン電力</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#080c16;--panel:#0c1220;--card:#121b2e;--cardhi:#16223a;--line:#1b2740;--line2:#26344f;
+  --ink:#eef2fb;--mut:#8a96b4;--dim:#5d6985;
+  --transit:#3fa3ff;--industry:#c45cf0;--energy:#34d39a;--tourism:#f7a83a;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans JP",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 16px;background:var(--panel);border-bottom:1px solid var(--line);flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:11px}
+.logo{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;background:linear-gradient(135deg,#2b6cff,#9b4dff)}
+.logo svg{width:19px;height:19px}
+.t1{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:16px;background:linear-gradient(90deg,#7fb0ff,#c79bff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.t2{font-size:11px;color:var(--mut);margin-top:3px}
+.tools{display:flex;gap:8px;flex-wrap:wrap}
+.tbtn{display:inline-flex;align-items:center;gap:6px;background:var(--card);border:1px solid var(--line2);color:#cdd8f3;font-size:12px;font-weight:500;font-family:inherit;padding:8px 12px;border-radius:9px;cursor:pointer;text-decoration:none}
+.tbtn:hover{background:var(--cardhi)}
+.tbtn.primary{background:linear-gradient(135deg,#3b6cff,#8b4dff);border:none;color:#fff;font-weight:700}
+.wrap{max-width:1200px;margin:0 auto;padding:18px 16px 60px}
+.controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.search{flex:1;min-width:220px;background:var(--card);border:1px solid var(--line2);border-radius:10px;color:var(--ink);font-size:13px;font-family:inherit;padding:10px 12px}
+.search:focus{outline:none;border-color:#33538c}
+.chips{display:flex;gap:7px;flex-wrap:wrap}
+.chip{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--card);color:var(--mut);border-radius:999px;padding:7px 12px;font-size:12px;cursor:pointer;font-weight:500}
+.chip .d{width:9px;height:9px;border-radius:50%;background:var(--c)}
+.chip[aria-pressed="true"]{color:var(--ink);background:var(--cardhi);border-color:var(--line2)}
+.count{font-size:12px;color:var(--mut);margin-bottom:8px}
+.count b{color:var(--ink)}
+table{width:100%;border-collapse:collapse;font-size:13px}
+thead th{position:sticky;top:0;background:var(--panel);text-align:left;padding:10px;border-bottom:1px solid var(--line2);font-size:11px;color:var(--mut);font-weight:500;cursor:pointer;white-space:nowrap}
+thead th:hover{color:var(--ink)}
+tbody td{padding:10px;border-bottom:1px solid var(--line);vertical-align:top}
+tbody tr:hover{background:var(--card)}
+.cat{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.cat .d{width:8px;height:8px;border-radius:50%;background:var(--c)}
+.nm{font-weight:700}
+.nm a{color:var(--ink);text-decoration:none;border-bottom:1px dotted var(--line2)}
+.nm a:hover{color:#9fc0ff}
+.st{font-size:11px;color:var(--mut);background:#1a2640;border:1px solid var(--line2);border-radius:6px;padding:2px 7px;white-space:nowrap}
+.bud{font-weight:700;color:var(--c);white-space:nowrap}
+.tags{color:var(--dim);font-size:11px}
+footer{margin-top:20px;color:var(--dim);font-size:11px;display:flex;gap:6px 14px;flex-wrap:wrap}
+footer a{color:#7d8aae;text-decoration:none}
+@media (max-width:760px){ .hide-sm{display:none} }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="brand">
+    <span class="logo"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="12" r="2.4" fill="#fff"/></svg></span>
+    <div><div class="t1">🔍 全国メガプロジェクト 統合検索</div><div class="t2">シン電力 内部資料 · 可視化データベース</div></div>
+  </div>
+  <div class="tools">
+    <a class="tbtn" href="index.html">🗾 マップへ</a>
+    <a class="tbtn" href="data/mega_projects.json" download>📥 JSON</a>
+    <a class="tbtn" href="data/mega_projects.csv" download>📥 CSV</a>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="controls">
+    <input class="search" id="q" type="search" placeholder="プロジェクト名・地名・推進主体・タグで検索…">
+    <div class="chips" id="chips"></div>
+  </div>
+  <div class="count">該当 <b id="n">0</b> 件 / 総投資規模 <b id="sum">—</b></div>
+  <table>
+    <thead><tr>
+      <th data-k="category_ja">分野</th>
+      <th data-k="name">案件</th>
+      <th data-k="status" class="hide-sm">ステータス</th>
+      <th data-k="budget_tn_yen">事業規模</th>
+      <th data-k="timeline" class="hide-sm">時期</th>
+      <th data-k="proponent" class="hide-sm">推進主体</th>
+    </tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+  <footer>
+    <span>最終更新: <span id="lastUpd"></span></span><span>·</span>
+    <span>データ出典: 各事業者・公表資料を基にした概算</span><span>·</span>
+    <span>Powered by Telegram Bot Intelligence</span><span>·</span>
+    <a href="https://github.com/ashlynx" target="_blank" rel="noopener">GitHub: ashlynx</a>
+  </footer>
+</div>
+
+<script>
+const UPDATED="__UPDATED__";
+const DATA_FB=__DATA_JSON__;
+(async function(){
+  let data;
+  try{ data=await (await fetch('data/mega_projects.json',{cache:'no-store'})).json(); }catch(e){ data=DATA_FB; }
+  const CATS=data.categories, P=data.projects;
+  document.getElementById('lastUpd').textContent=data.updated||UPDATED;
+
+  const active=new Set(Object.keys(CATS));
+  let query="", sortK="budget_tn_yen", sortDir=-1;
+
+  const chips=document.getElementById('chips');
+  Object.entries(CATS).forEach(([k,v])=>{
+    const b=document.createElement('button');
+    b.className='chip'; b.setAttribute('aria-pressed','true'); b.style.setProperty('--c',v.c);
+    b.innerHTML=`<span class="d"></span>${v.ja}`;
+    b.onclick=()=>{ active.has(k)?active.delete(k):active.add(k); b.setAttribute('aria-pressed',active.has(k)); render(); };
+    chips.appendChild(b);
+  });
+  document.getElementById('q').addEventListener('input',e=>{query=e.target.value.trim().toLowerCase();render();});
+  document.querySelectorAll('th[data-k]').forEach(th=>{
+    th.onclick=()=>{ const k=th.dataset.k; if(sortK===k)sortDir*=-1; else{sortK=k;sortDir=(k==='budget_tn_yen')?-1:1;} render(); };
+  });
+
+  function pass(p){
+    if(!active.has(p.cat)) return false;
+    if(query){ const hay=(p.name+' '+p.desc+' '+p.proponent+' '+p.tags.join(' ')).toLowerCase();
+      if(!hay.includes(query)) return false; }
+    return true;
+  }
+  function render(){
+    let rows=P.filter(pass);
+    rows.sort((a,b)=>{ let x=a[sortK],y=b[sortK];
+      if(typeof x==='string'){x=x||'';y=y||'';return x.localeCompare(y,'ja')*sortDir;}
+      return ((x||0)-(y||0))*sortDir; });
+    document.getElementById('n').textContent=rows.length;
+    document.getElementById('sum').textContent='約'+Math.round(rows.reduce((a,p)=>a+(p.budget_tn_yen||0),0)).toLocaleString()+'兆円〜';
+    const tb=document.getElementById('rows'); tb.innerHTML='';
+    rows.forEach(p=>{
+      const col=CATS[p.cat].c, tr=document.createElement('tr');
+      tr.innerHTML=`<td><span class="cat" style="--c:${col}"><span class="d"></span>${CATS[p.cat].ja}</span></td>
+        <td><div class="nm"><a href="${p.link}" target="_blank" rel="noopener">${p.name}</a></div><div class="tags">${p.tags.map(t=>'#'+t).join(' ')}</div></td>
+        <td class="hide-sm"><span class="st">${p.status}</span></td>
+        <td><span class="bud" style="--c:${col}">${p.budget}</span></td>
+        <td class="hide-sm">${p.timeline}</td>
+        <td class="hide-sm">${p.proponent}</td>`;
+      tb.appendChild(tr);
+    });
+  }
+  render();
+})();
+</script>
+</body>
+</html>

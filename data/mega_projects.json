@@ -1,0 +1,1039 @@
+{
+  "updated": "2026-06-16",
+  "count": 31,
+  "total_tn_yen": 39,
+  "categories": {
+    "transit": {
+      "ja": "交通・インフラ",
+      "c": "#3fa3ff"
+    },
+    "industry": {
+      "ja": "産業・テクノロジー",
+      "c": "#c45cf0"
+    },
+    "energy": {
+      "ja": "エネルギー・環境",
+      "c": "#34d39a"
+    },
+    "tourism": {
+      "ja": "観光・地域活性化",
+      "c": "#f7a83a"
+    }
+  },
+  "routes": {
+    "linear": [
+      [
+        35.628,
+        139.738
+      ],
+      [
+        35.66,
+        138.57
+      ],
+      [
+        35.18,
+        136.9
+      ]
+    ],
+    "hokkaido": [
+      [
+        41.907,
+        140.647
+      ],
+      [
+        42.32,
+        140.55
+      ],
+      [
+        43.063,
+        141.347
+      ]
+    ],
+    "hokuriku": [
+      [
+        36.578,
+        136.648
+      ],
+      [
+        35.79,
+        136.22
+      ],
+      [
+        35.645,
+        136.066
+      ]
+    ],
+    "nishikyushu": [
+      [
+        33.194,
+        130.02
+      ],
+      [
+        32.75,
+        129.873
+      ]
+    ],
+    "hvdc": [
+      [
+        43.06,
+        141.3
+      ],
+      [
+        41.5,
+        140.0
+      ],
+      [
+        39.0,
+        139.6
+      ],
+      [
+        37.9,
+        138.9
+      ]
+    ]
+  },
+  "projects": [
+    {
+      "cat": "transit",
+      "category_ja": "交通・インフラ",
+      "name": "リニア中央新幹線",
+      "status": "建設・実施中",
+      "bud": "約9兆円",
+      "budget": "約9兆円",
+      "budN": 9,
+      "budget_tn_yen": 9,
+      "tl": "2027年以降（名古屋開業）、2037年（大阪延伸予定）",
+      "timeline": "2027年以降（名古屋開業）、2037年（大阪延伸予定）",
+      "pr": "東海旅客鉄道（JR東海）、国土交通省",
+      "proponent": "東海旅客鉄道（JR東海）、国土交通省",
+      "desc": "東京（品川）〜名古屋〜大阪を超電導リニアで結ぶ超高速鉄道。三大都市圏の一体化を図る、極めて社会的インパクトの大きいプロジェクト。",
+      "tags": [
+        "リニア",
+        "超高速鉄道",
+        "三大都市圏",
+        "メガプロジェクト"
+      ],
+      "at": [
+        35.18,
+        136.9
+      ],
+      "lat": 35.18,
+      "lng": 136.9,
+      "route": "linear",
+      "link": "https://linear-chuo-shinkansen.jr-central.co.jp/",
+      "link_direct": true,
+      "link_label": "東海旅客鉄道公式サイト"
+    },
+    {
+      "cat": "transit",
+      "category_ja": "交通・インフラ",
+      "name": "北海道新幹線延伸（新函館北斗〜札幌）",
+      "status": "建設・実施中",
+      "bud": "約2.3兆円",
+      "budget": "約2.3兆円",
+      "budN": 2.3,
+      "budget_tn_yen": 2.3,
+      "tl": "2030年度末頃（一部延期の可能性あり）",
+      "timeline": "2030年度末頃（一部延期の可能性あり）",
+      "pr": "鉄道・運輸機構（JRTT）、JR北海道",
+      "proponent": "鉄道・運輸機構（JRTT）、JR北海道",
+      "desc": "新函館北斗から札幌を結ぶ新幹線延伸計画。札幌〜東京間の陸路アクセスを劇的に変える一大インフラ事業。",
+      "tags": [
+        "新幹線",
+        "北海道",
+        "札幌"
+      ],
+      "at": [
+        43.063,
+        141.347
+      ],
+      "lat": 43.063,
+      "lng": 141.347,
+      "route": "hokkaido",
+      "link": "https://www.jrtt.go.jp/",
+      "link_direct": true,
+      "link_label": "鉄道・運輸機構公式サイト"
+    },
+    {
+      "cat": "transit",
+      "category_ja": "交通・インフラ",
+      "name": "北陸新幹線延伸（金沢〜敦賀〜新大阪）",
+      "status": "一部運用中",
+      "bud": "敦賀以西区間で約2.1兆円以上（試算）",
+      "budget": "敦賀以西区間で約2.1兆円以上（試算）",
+      "budN": 2.1,
+      "budget_tn_yen": 2.1,
+      "tl": "敦賀開業：2024年3月、新大阪延伸：構想中（環境影響評価手続き中）",
+      "timeline": "敦賀開業：2024年3月、新大阪延伸：構想中（環境影響評価手続き中）",
+      "pr": "鉄道・運輸機構（JRTT）、国土交通省、JR西日本",
+      "proponent": "鉄道・運輸機構（JRTT）、国土交通省、JR西日本",
+      "desc": "北陸地方を経由して東京と大阪を結ぶ新幹線路線。敦賀〜新大阪間の未着工区間の着工・開業が待たれる。",
+      "tags": [
+        "新幹線",
+        "高速鉄道",
+        "北陸",
+        "関西"
+      ],
+      "at": [
+        35.645,
+        136.066
+      ],
+      "lat": 35.645,
+      "lng": 136.066,
+      "route": "hokuriku",
+      "link": "https://www.jrtt.go.jp/",
+      "link_direct": true,
+      "link_label": "鉄道・運輸機構公式サイト"
+    },
+    {
+      "cat": "transit",
+      "category_ja": "交通・インフラ",
+      "name": "西九州新幹線（武雄温泉〜長崎）",
+      "status": "一部運用中",
+      "bud": "数千億円規模",
+      "budget": "数千億円規模",
+      "budN": 0.6,
+      "budget_tn_yen": 0.6,
+      "tl": "2022年開業、全線フル規格化は協議中",
+      "timeline": "2022年開業、全線フル規格化は協議中",
+      "pr": "鉄道・運輸機構（JRTT）、JR九州",
+      "proponent": "鉄道・運輸機構（JRTT）、JR九州",
+      "desc": "武雄温泉〜長崎間が先行開業。新鳥栖までのフル規格化が積み残しの課題として残る。",
+      "tags": [
+        "新幹線",
+        "九州",
+        "長崎"
+      ],
+      "at": [
+        32.75,
+        129.873
+      ],
+      "lat": 32.75,
+      "lng": 129.873,
+      "route": "nishikyushu",
+      "link": "https://www.jrkyushu.co.jp/",
+      "link_direct": true,
+      "link_label": "鉄道・運輸機構公式サイト"
+    },
+    {
+      "cat": "transit",
+      "category_ja": "交通・インフラ",
+      "name": "なにわ筋線",
+      "status": "建設・実施中",
+      "bud": "約3,300億円",
+      "budget": "約3,300億円",
+      "budN": 0.33,
+      "budget_tn_yen": 0.33,
+      "tl": "2031年春 開業目標",
+      "timeline": "2031年春 開業目標",
+      "pr": "JR西日本、南海電鉄、大阪市",
+      "proponent": "JR西日本、南海電鉄、大阪市",
+      "desc": "新大阪・梅田と難波・関西空港方面を直結する大阪都心の新線。所要時間短縮と新たな南北軸を形成。",
+      "tags": [
+        "大阪",
+        "新線",
+        "空港アクセス"
+      ],
+      "at": [
+        34.69,
+        135.498
+      ],
+      "lat": 34.69,
+      "lng": 135.498,
+      "route": null,
+      "link": "https://www.westjr.co.jp/",
+      "link_direct": true,
+      "link_label": "JR西日本公式サイト"
+    },
+    {
+      "cat": "transit",
+      "category_ja": "交通・インフラ",
+      "name": "羽田空港アクセス線",
+      "status": "建設・実施中",
+      "bud": "約3,000億円",
+      "budget": "約3,000億円",
+      "budN": 0.3,
+      "budget_tn_yen": 0.3,
+      "tl": "2031年度 開業目標",
+      "timeline": "2031年度 開業目標",
+      "pr": "JR東日本",
+      "proponent": "JR東日本",
+      "desc": "東京・上野方面から羽田空港へ直結する新ルート。都心〜空港アクセスを大幅に短縮する。",
+      "tags": [
+        "羽田",
+        "空港アクセス",
+        "東京"
+      ],
+      "at": [
+        35.549,
+        139.784
+      ],
+      "lat": 35.549,
+      "lng": 139.784,
+      "route": null,
+      "link": "https://www.jreast.co.jp/",
+      "link_direct": true,
+      "link_label": "JR東日本公式サイト"
+    },
+    {
+      "cat": "transit",
+      "category_ja": "交通・インフラ",
+      "name": "東京メトロ 有楽町線・南北線 延伸",
+      "status": "建設・実施中",
+      "bud": "約2,690億円",
+      "budget": "約2,690億円",
+      "budN": 0.27,
+      "budget_tn_yen": 0.27,
+      "tl": "2030年代 開業目標",
+      "timeline": "2030年代 開業目標",
+      "pr": "東京地下鉄（東京メトロ）",
+      "proponent": "東京地下鉄（東京メトロ）",
+      "desc": "有楽町線（豊洲〜住吉）と南北線（品川方面）の延伸事業。都心の鉄道ネットワークを強化する。",
+      "tags": [
+        "地下鉄",
+        "東京",
+        "延伸"
+      ],
+      "at": [
+        35.655,
+        139.795
+      ],
+      "lat": 35.655,
+      "lng": 139.795,
+      "route": null,
+      "link": "https://www.tokyometro.jp/",
+      "link_direct": true,
+      "link_label": "東京地下鉄公式サイト"
+    },
+    {
+      "cat": "industry",
+      "category_ja": "産業・テクノロジー",
+      "name": "TSMC熊本（JASM 第1・第2工場）",
+      "status": "建設・実施中",
+      "bud": "約3.5兆円",
+      "budget": "約3.5兆円",
+      "budN": 3.5,
+      "budget_tn_yen": 3.5,
+      "tl": "第1工場 量産入り、第2工場 建設中",
+      "timeline": "第1工場 量産入り、第2工場 建設中",
+      "pr": "JASM（TSMC・ソニー・デンソー・トヨタ）",
+      "proponent": "JASM（TSMC・ソニー・デンソー・トヨタ）",
+      "desc": "日本最大級の半導体投資。第1工場は量産入りし、第2工場が建設中。関連サプライヤーが九州一円に集積する。",
+      "tags": [
+        "半導体",
+        "TSMC",
+        "九州",
+        "ファウンドリ"
+      ],
+      "at": [
+        32.886,
+        130.784
+      ],
+      "lat": 32.886,
+      "lng": 130.784,
+      "route": null,
+      "link": "https://www.jasm.co.jp/",
+      "link_direct": true,
+      "link_label": "JASM公式サイト"
+    },
+    {
+      "cat": "industry",
+      "category_ja": "産業・テクノロジー",
+      "name": "Rapidus 次世代半導体製造拠点（千歳）",
+      "status": "建設・実施中",
+      "bud": "約5兆円",
+      "budget": "約5兆円",
+      "budN": 5,
+      "budget_tn_yen": 5,
+      "tl": "2025年 試作ライン稼働、2027年 量産開始予定",
+      "timeline": "2025年 試作ライン稼働、2027年 量産開始予定",
+      "pr": "Rapidus 株式会社",
+      "proponent": "Rapidus 株式会社",
+      "desc": "北海道千歳市における2nm以下の最先端ロジック半導体の量産拠点整備。日本の半導体産業復活とサプライチェーン再構築の中核。",
+      "tags": [
+        "半導体",
+        "2nm",
+        "北海道",
+        "国策"
+      ],
+      "at": [
+        42.793,
+        141.69
+      ],
+      "lat": 42.793,
+      "lng": 141.69,
+      "route": null,
+      "link": "https://www.rapidus.inc/",
+      "link_direct": true,
+      "link_label": "Rapidus 株式会社公式サイト"
+    },
+    {
+      "cat": "industry",
+      "category_ja": "産業・テクノロジー",
+      "name": "Micron 広島（先端DRAM）",
+      "status": "投資拡大中",
+      "bud": "数千億円規模",
+      "budget": "数千億円規模",
+      "budN": 0.8,
+      "budget_tn_yen": 0.8,
+      "tl": "EUV導入、次世代メモリの量産",
+      "timeline": "EUV導入、次世代メモリの量産",
+      "pr": "マイクロンメモリジャパン",
+      "proponent": "マイクロンメモリジャパン",
+      "desc": "DRAMの最先端プロセス拠点。EUV露光を導入し、次世代メモリの主力供給拠点となる。",
+      "tags": [
+        "半導体",
+        "DRAM",
+        "広島"
+      ],
+      "at": [
+        34.37,
+        132.743
+      ],
+      "lat": 34.37,
+      "lng": 132.743,
+      "route": null,
+      "link": "https://jp.micron.com/",
+      "link_direct": true,
+      "link_label": "マイクロンメモリジャパン公式サイト"
+    },
+    {
+      "cat": "industry",
+      "category_ja": "産業・テクノロジー",
+      "name": "キオクシア 北上工場（3D NAND）",
+      "status": "増設進行",
+      "bud": "兆円規模",
+      "budget": "兆円規模",
+      "budN": 1.2,
+      "budget_tn_yen": 1.2,
+      "tl": "段階的に増設",
+      "timeline": "段階的に増設",
+      "pr": "キオクシア、Western Digital",
+      "proponent": "キオクシア、Western Digital",
+      "desc": "3D NANDフラッシュメモリの中核工場。四日市と並ぶ二大拠点として段階的な増設が続く。",
+      "tags": [
+        "半導体",
+        "フラッシュメモリ",
+        "岩手"
+      ],
+      "at": [
+        39.286,
+        141.113
+      ],
+      "lat": 39.286,
+      "lng": 141.113,
+      "route": null,
+      "link": "https://www.kioxia.com/ja-jp/top.html",
+      "link_direct": true,
+      "link_label": "キオクシア公式サイト"
+    },
+    {
+      "cat": "industry",
+      "category_ja": "産業・テクノロジー",
+      "name": "ソニー半導体 熊本（イメージセンサ）",
+      "status": "新棟建設",
+      "bud": "数千億円",
+      "budget": "数千億円",
+      "budN": 0.6,
+      "budget_tn_yen": 0.6,
+      "tl": "CMOSイメージセンサの増産",
+      "timeline": "CMOSイメージセンサの増産",
+      "pr": "ソニーセミコンダクタソリューションズ",
+      "proponent": "ソニーセミコンダクタソリューションズ",
+      "desc": "スマホ向けCMOSイメージセンサの一大供給拠点。TSMC熊本と隣接し、九州の半導体集積を厚くする。",
+      "tags": [
+        "半導体",
+        "イメージセンサ",
+        "熊本"
+      ],
+      "at": [
+        32.87,
+        130.77
+      ],
+      "lat": 32.87,
+      "lng": 130.77,
+      "route": null,
+      "link": "https://www.sony-semicon.com/ja/",
+      "link_direct": true,
+      "link_label": "ソニーセミコンダクタソリューションズ公式サイト"
+    },
+    {
+      "cat": "industry",
+      "category_ja": "産業・テクノロジー",
+      "name": "印西データセンター・クラスター",
+      "status": "拡大継続",
+      "bud": "兆円規模の集積",
+      "budget": "兆円規模の集積",
+      "budN": 2,
+      "budget_tn_yen": 2,
+      "tl": "クラウド大手が集積、増床が継続",
+      "timeline": "クラウド大手が集積、増床が継続",
+      "pr": "国内外クラウド事業者",
+      "proponent": "国内外クラウド事業者",
+      "desc": "国内最大のデータセンター集積地。クラウド大手のリージョンが集中し、AI需要で電力需要が急増している。",
+      "tags": [
+        "データセンター",
+        "クラウド",
+        "千葉",
+        "AI"
+      ],
+      "at": [
+        35.832,
+        140.146
+      ],
+      "lat": 35.832,
+      "lng": 140.146,
+      "route": null,
+      "link": "https://www.google.com/search?q=%E5%8D%B0%E8%A5%BF%E3%83%87%E3%83%BC%E3%82%BF%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%BB%E3%82%AF%E3%83%A9%E3%82%B9%E3%82%BF%E3%83%BC%20%E5%9B%BD%E5%86%85%E5%A4%96%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89%E4%BA%8B%E6%A5%AD%E8%80%85%20%E5%85%AC%E5%BC%8F",
+      "link_direct": false,
+      "link_label": "国内外クラウド事業者公式情報を検索"
+    },
+    {
+      "cat": "industry",
+      "category_ja": "産業・テクノロジー",
+      "name": "トヨタ Woven City（裾野）",
+      "status": "第1期 開所",
+      "bud": "数千億円規模",
+      "budget": "数千億円規模",
+      "budN": 0.5,
+      "budget_tn_yen": 0.5,
+      "tl": "2024年〜 段階的に稼働",
+      "timeline": "2024年〜 段階的に稼働",
+      "pr": "トヨタ自動車、ウーブン・バイ・トヨタ",
+      "proponent": "トヨタ自動車、ウーブン・バイ・トヨタ",
+      "desc": "富士山麓に建設された実証実験都市。モビリティ・エネルギー・AIを街全体で検証する“動く実験場”。",
+      "tags": [
+        "実証都市",
+        "モビリティ",
+        "静岡",
+        "スマートシティ"
+      ],
+      "at": [
+        35.183,
+        138.91
+      ],
+      "lat": 35.183,
+      "lng": 138.91,
+      "route": null,
+      "link": "https://www.woven-city.global/",
+      "link_direct": true,
+      "link_label": "トヨタ自動車公式サイト"
+    },
+    {
+      "cat": "industry",
+      "category_ja": "産業・テクノロジー",
+      "name": "石狩 AI/GPUデータセンター",
+      "status": "拡張中",
+      "bud": "数百億円〜",
+      "budget": "数百億円〜",
+      "budN": 0.3,
+      "budget_tn_yen": 0.3,
+      "tl": "再エネ立地でGPU基盤を増床",
+      "timeline": "再エネ立地でGPU基盤を増床",
+      "pr": "さくらインターネット ほか",
+      "proponent": "さくらインターネット ほか",
+      "desc": "冷涼な気候と再エネを活かしたグリーンDC拠点。生成AI向けGPUクラウド基盤として増床が続く。",
+      "tags": [
+        "データセンター",
+        "AI",
+        "GPU",
+        "北海道"
+      ],
+      "at": [
+        43.2,
+        141.3
+      ],
+      "lat": 43.2,
+      "lng": 141.3,
+      "route": null,
+      "link": "https://www.sakura.ad.jp/",
+      "link_direct": true,
+      "link_label": "さくらインターネット ほか公式サイト"
+    },
+    {
+      "cat": "industry",
+      "category_ja": "産業・テクノロジー",
+      "name": "大阪 クラウドDCリージョン",
+      "status": "拡大中",
+      "bud": "数千億円規模",
+      "budget": "数千億円規模",
+      "budN": 0.6,
+      "budget_tn_yen": 0.6,
+      "tl": "クラウド大手がリージョンを拡張",
+      "timeline": "クラウド大手がリージョンを拡張",
+      "pr": "国内外クラウド事業者",
+      "proponent": "国内外クラウド事業者",
+      "desc": "西日本のクラウド中核。大手各社がリージョンを拡張し、冗長性とレイテンシ改善を図る。",
+      "tags": [
+        "データセンター",
+        "クラウド",
+        "大阪"
+      ],
+      "at": [
+        34.7,
+        135.5
+      ],
+      "lat": 34.7,
+      "lng": 135.5,
+      "route": null,
+      "link": "https://www.google.com/search?q=%E5%A4%A7%E9%98%AA%20%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89DC%E3%83%AA%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%20%E5%9B%BD%E5%86%85%E5%A4%96%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89%E4%BA%8B%E6%A5%AD%E8%80%85%20%E5%85%AC%E5%BC%8F",
+      "link_direct": false,
+      "link_label": "国内外クラウド事業者公式情報を検索"
+    },
+    {
+      "cat": "energy",
+      "category_ja": "エネルギー・環境",
+      "name": "秋田県沖 洋上風力発電プロジェクト",
+      "status": "一部運用中",
+      "bud": "数千億円〜1兆円規模（全体投資額）",
+      "budget": "数千億円〜1兆円規模（全体投資額）",
+      "budN": 1,
+      "budget_tn_yen": 1,
+      "tl": "順次運転開始（一部商用運転中）",
+      "timeline": "順次運転開始（一部商用運転中）",
+      "pr": "各事業コンソーシアム",
+      "proponent": "各事業コンソーシアム",
+      "desc": "能代市・三種町・男鹿市沖および秋田市・潟上市沖における、国内最大規模の商業用洋上風力発電事業。グリーン電源の主力化を担う。",
+      "tags": [
+        "洋上風力",
+        "再エネ",
+        "秋田",
+        "脱炭素"
+      ],
+      "at": [
+        40.0,
+        139.95
+      ],
+      "lat": 40.0,
+      "lng": 139.95,
+      "route": null,
+      "link": "https://www.google.com/search?q=%E7%A7%8B%E7%94%B0%E7%9C%8C%E6%B2%96%20%E6%B4%8B%E4%B8%8A%E9%A2%A8%E5%8A%9B%E7%99%BA%E9%9B%BB%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%20%E5%90%84%E4%BA%8B%E6%A5%AD%E3%82%B3%E3%83%B3%E3%82%BD%E3%83%BC%E3%82%B7%E3%82%A2%E3%83%A0%20%E5%85%AC%E5%BC%8F",
+      "link_direct": false,
+      "link_label": "各事業コンソーシアム公式情報を検索"
+    },
+    {
+      "cat": "energy",
+      "category_ja": "エネルギー・環境",
+      "name": "銚子沖 洋上風力",
+      "status": "建設・運開",
+      "bud": "数千億円",
+      "budget": "数千億円",
+      "budN": 0.4,
+      "budget_tn_yen": 0.4,
+      "tl": "首都圏向け大型洋上風力",
+      "timeline": "首都圏向け大型洋上風力",
+      "pr": "事業コンソーシアム",
+      "proponent": "事業コンソーシアム",
+      "desc": "関東圏に近い大型洋上風力。首都圏向けの再エネ電源として期待される海域。",
+      "tags": [
+        "洋上風力",
+        "千葉",
+        "再エネ"
+      ],
+      "at": [
+        35.76,
+        140.92
+      ],
+      "lat": 35.76,
+      "lng": 140.92,
+      "route": null,
+      "link": "https://www.google.com/search?q=%E9%8A%9A%E5%AD%90%E6%B2%96%20%E6%B4%8B%E4%B8%8A%E9%A2%A8%E5%8A%9B%20%E4%BA%8B%E6%A5%AD%E3%82%B3%E3%83%B3%E3%82%BD%E3%83%BC%E3%82%B7%E3%82%A2%E3%83%A0%20%E5%85%AC%E5%BC%8F",
+      "link_direct": false,
+      "link_label": "事業コンソーシアム公式情報を検索"
+    },
+    {
+      "cat": "energy",
+      "category_ja": "エネルギー・環境",
+      "name": "五島沖 浮体式洋上風力",
+      "status": "商業運転",
+      "bud": "数千億円",
+      "budget": "数千億円",
+      "budN": 0.3,
+      "budget_tn_yen": 0.3,
+      "tl": "国内初の商用浮体式",
+      "timeline": "国内初の商用浮体式",
+      "pr": "戸田建設 ほか",
+      "proponent": "戸田建設 ほか",
+      "desc": "国内初の商用浮体式洋上風力。水深の深い日本沿岸での展開モデルケースとなる。",
+      "tags": [
+        "浮体式",
+        "洋上風力",
+        "長崎"
+      ],
+      "at": [
+        32.7,
+        128.8
+      ],
+      "lat": 32.7,
+      "lng": 128.8,
+      "route": null,
+      "link": "https://www.toda.co.jp/",
+      "link_direct": true,
+      "link_label": "戸田建設 ほか公式サイト"
+    },
+    {
+      "cat": "energy",
+      "category_ja": "エネルギー・環境",
+      "name": "柏崎刈羽 原子力発電所 再稼働",
+      "status": "再稼働手続き",
+      "bud": "巨大既存資産",
+      "budget": "巨大既存資産",
+      "budN": 1.5,
+      "budget_tn_yen": 1.5,
+      "tl": "再稼働の可否を協議",
+      "timeline": "再稼働の可否を協議",
+      "pr": "東京電力ホールディングス",
+      "proponent": "東京電力ホールディングス",
+      "desc": "世界最大級の原子力サイト。再稼働の可否が、国内の電力需給と電力価格に大きく影響する。",
+      "tags": [
+        "原子力",
+        "新潟",
+        "電力"
+      ],
+      "at": [
+        37.428,
+        138.602
+      ],
+      "lat": 37.428,
+      "lng": 138.602,
+      "route": null,
+      "link": "https://www.tepco.co.jp/",
+      "link_direct": true,
+      "link_label": "東京電力ホールディングス公式サイト"
+    },
+    {
+      "cat": "energy",
+      "category_ja": "エネルギー・環境",
+      "name": "福島水素エネルギー研究フィールド（FH2R）",
+      "status": "実証・拡大",
+      "bud": "数百億円〜",
+      "budget": "数百億円〜",
+      "budN": 0.2,
+      "budget_tn_yen": 0.2,
+      "tl": "再エネ由来水素の製造実証",
+      "timeline": "再エネ由来水素の製造実証",
+      "pr": "NEDO、東芝 ほか",
+      "proponent": "NEDO、東芝 ほか",
+      "desc": "世界最大級の再エネ由来水素製造実証拠点。脱炭素サプライチェーンの起点となる。",
+      "tags": [
+        "水素",
+        "脱炭素",
+        "福島"
+      ],
+      "at": [
+        37.492,
+        141.0
+      ],
+      "lat": 37.492,
+      "lng": 141.0,
+      "route": null,
+      "link": "https://www.nedo.go.jp/",
+      "link_direct": true,
+      "link_label": "NEDO公式サイト"
+    },
+    {
+      "cat": "energy",
+      "category_ja": "エネルギー・環境",
+      "name": "九州 系統用蓄電池（BESS）集積",
+      "status": "開発加速",
+      "bud": "数百億円〜",
+      "budget": "数百億円〜",
+      "budN": 0.5,
+      "budget_tn_yen": 0.5,
+      "tl": "需給調整・容量市場収益を狙い増加",
+      "timeline": "需給調整・容量市場収益を狙い増加",
+      "pr": "各開発事業者",
+      "proponent": "各開発事業者",
+      "desc": "出力制御の多い九州で系統用蓄電池が急増。需給調整市場・容量市場での収益を狙う案件が集積している。",
+      "tags": [
+        "蓄電池",
+        "BESS",
+        "九州",
+        "系統"
+      ],
+      "at": [
+        32.98,
+        130.79
+      ],
+      "lat": 32.98,
+      "lng": 130.79,
+      "route": null,
+      "link": "https://www.google.com/search?q=%E4%B9%9D%E5%B7%9E%20%E7%B3%BB%E7%B5%B1%E7%94%A8%E8%93%84%E9%9B%BB%E6%B1%A0%EF%BC%88BESS%EF%BC%89%E9%9B%86%E7%A9%8D%20%E5%90%84%E9%96%8B%E7%99%BA%E4%BA%8B%E6%A5%AD%E8%80%85%20%E5%85%AC%E5%BC%8F",
+      "link_direct": false,
+      "link_label": "各開発事業者公式情報を検索"
+    },
+    {
+      "cat": "energy",
+      "category_ja": "エネルギー・環境",
+      "name": "北海道〜本州 海底直流送電（日本海ルートHVDC）",
+      "status": "計画・調査",
+      "bud": "数千億円〜兆円規模",
+      "budget": "数千億円〜兆円規模",
+      "budN": 1.5,
+      "budget_tn_yen": 1.5,
+      "tl": "2030年代の運用開始を想定",
+      "timeline": "2030年代の運用開始を想定",
+      "pr": "OCCTO、電源開発（J-POWER）ほか",
+      "proponent": "OCCTO、電源開発（J-POWER）ほか",
+      "desc": "北海道の再エネ大量導入を本州へ送るための大容量海底直流送電。全国規模の系統増強（マスタープラン）の目玉。",
+      "tags": [
+        "HVDC",
+        "系統増強",
+        "再エネ",
+        "北海道"
+      ],
+      "at": [
+        39.0,
+        139.6
+      ],
+      "lat": 39.0,
+      "lng": 139.6,
+      "route": "hvdc",
+      "link": "https://www.google.com/search?q=%E5%8C%97%E6%B5%B7%E9%81%93%E3%80%9C%E6%9C%AC%E5%B7%9E%20%E6%B5%B7%E5%BA%95%E7%9B%B4%E6%B5%81%E9%80%81%E9%9B%BB%EF%BC%88%E6%97%A5%E6%9C%AC%E6%B5%B7%E3%83%AB%E3%83%BC%E3%83%88HVDC%EF%BC%89%20OCCTO%E3%80%81%E9%9B%BB%E6%BA%90%E9%96%8B%E7%99%BA%EF%BC%88J-POWER%EF%BC%89%E3%81%BB%E3%81%8B%20%E5%85%AC%E5%BC%8F",
+      "link_direct": false,
+      "link_label": "OCCTO公式情報を検索"
+    },
+    {
+      "cat": "energy",
+      "category_ja": "エネルギー・環境",
+      "name": "神戸・川崎 水素サプライチェーン",
+      "status": "実証〜商用化",
+      "bud": "数千億円規模",
+      "budget": "数千億円規模",
+      "budN": 0.4,
+      "budget_tn_yen": 0.4,
+      "tl": "液化水素の輸入・受入を実証",
+      "timeline": "液化水素の輸入・受入を実証",
+      "pr": "HySTRA、ENEOS ほか",
+      "proponent": "HySTRA、ENEOS ほか",
+      "desc": "海外から液化水素を輸入・受入する世界初級のサプライチェーン実証。発電・産業用の脱炭素燃料を狙う。",
+      "tags": [
+        "水素",
+        "液化水素",
+        "輸入",
+        "脱炭素"
+      ],
+      "at": [
+        34.68,
+        135.2
+      ],
+      "lat": 34.68,
+      "lng": 135.2,
+      "route": null,
+      "link": "https://www.google.com/search?q=%E7%A5%9E%E6%88%B8%E3%83%BB%E5%B7%9D%E5%B4%8E%20%E6%B0%B4%E7%B4%A0%E3%82%B5%E3%83%97%E3%83%A9%E3%82%A4%E3%83%81%E3%82%A7%E3%83%BC%E3%83%B3%20HySTRA%E3%80%81ENEOS%20%E3%81%BB%E3%81%8B%20%E5%85%AC%E5%BC%8F",
+      "link_direct": false,
+      "link_label": "HySTRA公式情報を検索"
+    },
+    {
+      "cat": "tourism",
+      "category_ja": "観光・地域活性化",
+      "name": "大阪・夢洲 統合型リゾート（IR）構想",
+      "status": "計画決定",
+      "bud": "初期投資額 約1兆8,000億円",
+      "budget": "初期投資額 約1兆8,000億円",
+      "budN": 1.8,
+      "budget_tn_yen": 1.8,
+      "tl": "2030年秋頃 開業予定",
+      "timeline": "2030年秋頃 開業予定",
+      "pr": "大阪IR株式会社（MGM・オリックス等）",
+      "proponent": "大阪IR株式会社（MGM・オリックス等）",
+      "desc": "大阪湾の人工島「夢洲」における日本初のカジノを含む統合型リゾート（IR）の整備計画。関西圏への観光客誘致の起爆剤として期待。",
+      "tags": [
+        "IR",
+        "カジノ",
+        "大阪",
+        "夢洲"
+      ],
+      "at": [
+        34.65,
+        135.39
+      ],
+      "lat": 34.65,
+      "lng": 135.39,
+      "route": null,
+      "link": "https://www.google.com/search?q=%E5%A4%A7%E9%98%AA%E3%83%BB%E5%A4%A2%E6%B4%B2%20%E7%B5%B1%E5%90%88%E5%9E%8B%E3%83%AA%E3%82%BE%E3%83%BC%E3%83%88%EF%BC%88IR%EF%BC%89%E6%A7%8B%E6%83%B3%20%E5%A4%A7%E9%98%AAIR%E6%A0%AA%E5%BC%8F%E4%BC%9A%E7%A4%BE%EF%BC%88MGM%E3%83%BB%E3%82%AA%E3%83%AA%E3%83%83%E3%82%AF%E3%82%B9%E7%AD%89%EF%BC%89%20%E5%85%AC%E5%BC%8F",
+      "link_direct": false,
+      "link_label": "大阪IR株式会社公式情報を検索"
+    },
+    {
+      "cat": "tourism",
+      "category_ja": "観光・地域活性化",
+      "name": "うめきた（グラングリーン大阪）",
+      "status": "段階開業",
+      "bud": "約2,700億円",
+      "budget": "約2,700億円",
+      "budN": 0.27,
+      "budget_tn_yen": 0.27,
+      "tl": "2024年 先行まちびらき、2027年 全体開業",
+      "timeline": "2024年 先行まちびらき、2027年 全体開業",
+      "pr": "開発事業者連合",
+      "proponent": "開発事業者連合",
+      "desc": "大阪駅北・最後の一等地。約4.5haの都市公園を中核に、職・住・遊が融合する新拠点を形成する。",
+      "tags": [
+        "再開発",
+        "大阪",
+        "みどり"
+      ],
+      "at": [
+        34.703,
+        135.494
+      ],
+      "lat": 34.703,
+      "lng": 135.494,
+      "route": null,
+      "link": "https://www.google.com/search?q=%E3%81%86%E3%82%81%E3%81%8D%E3%81%9F%EF%BC%88%E3%82%B0%E3%83%A9%E3%83%B3%E3%82%B0%E3%83%AA%E3%83%BC%E3%83%B3%E5%A4%A7%E9%98%AA%EF%BC%89%20%E9%96%8B%E7%99%BA%E4%BA%8B%E6%A5%AD%E8%80%85%E9%80%A3%E5%90%88%20%E5%85%AC%E5%BC%8F",
+      "link_direct": false,
+      "link_label": "開発事業者連合公式情報を検索"
+    },
+    {
+      "cat": "tourism",
+      "category_ja": "観光・地域活性化",
+      "name": "天神ビッグバン",
+      "status": "進行中",
+      "bud": "経済効果 数兆円試算",
+      "budget": "経済効果 数兆円試算",
+      "budN": 1,
+      "budget_tn_yen": 1,
+      "tl": "ビル建替えを一斉に促進",
+      "timeline": "ビル建替えを一斉に促進",
+      "pr": "福岡市、民間事業者",
+      "proponent": "福岡市、民間事業者",
+      "desc": "航空法の規制緩和を機に、天神エリアのビル建替えを一斉に促進。福岡都心の容積と機能を大きく更新する。",
+      "tags": [
+        "再開発",
+        "福岡",
+        "都心"
+      ],
+      "at": [
+        33.591,
+        130.399
+      ],
+      "lat": 33.591,
+      "lng": 130.399,
+      "route": null,
+      "link": "https://www.google.com/search?q=%E5%A4%A9%E7%A5%9E%E3%83%93%E3%83%83%E3%82%B0%E3%83%90%E3%83%B3%20%E7%A6%8F%E5%B2%A1%E5%B8%82%E3%80%81%E6%B0%91%E9%96%93%E4%BA%8B%E6%A5%AD%E8%80%85%20%E5%85%AC%E5%BC%8F",
+      "link_direct": false,
+      "link_label": "福岡市公式情報を検索"
+    },
+    {
+      "cat": "tourism",
+      "category_ja": "観光・地域活性化",
+      "name": "麻布台ヒルズ",
+      "status": "開業済み",
+      "bud": "約5,800億円",
+      "budget": "約5,800億円",
+      "budN": 0.58,
+      "budget_tn_yen": 0.58,
+      "tl": "2023年 開業",
+      "timeline": "2023年 開業",
+      "pr": "森ビル",
+      "proponent": "森ビル",
+      "desc": "日本一の超高層（約330m）を中核とする複合再開発。住・職・商・文化を一体化した「緑に包まれた街」。",
+      "tags": [
+        "再開発",
+        "東京",
+        "超高層"
+      ],
+      "at": [
+        35.66,
+        139.74
+      ],
+      "lat": 35.66,
+      "lng": 139.74,
+      "route": null,
+      "link": "https://www.azabudai-hills.com/",
+      "link_direct": true,
+      "link_label": "森ビル公式サイト"
+    },
+    {
+      "cat": "tourism",
+      "category_ja": "観光・地域活性化",
+      "name": "JUNGLIA OKINAWA（沖縄・名護）",
+      "status": "開業",
+      "bud": "約700億円",
+      "budget": "約700億円",
+      "budN": 0.07,
+      "budget_tn_yen": 0.07,
+      "tl": "2025年7月 開業",
+      "timeline": "2025年7月 開業",
+      "pr": "ジャパンエンターテイメント",
+      "proponent": "ジャパンエンターテイメント",
+      "desc": "沖縄本島北部やんばるの森に開業した大型テーマパーク。自然と最新アトラクションを融合し、沖縄観光の新たな核に。",
+      "tags": [
+        "テーマパーク",
+        "沖縄",
+        "観光"
+      ],
+      "at": [
+        26.69,
+        128.0
+      ],
+      "lat": 26.69,
+      "lng": 128.0,
+      "route": null,
+      "link": "https://junglia.jp/",
+      "link_direct": true,
+      "link_label": "ジャパンエンターテイメント公式サイト"
+    },
+    {
+      "cat": "tourism",
+      "category_ja": "観光・地域活性化",
+      "name": "北海道ボールパーク Fビレッジ（エスコンフィールド）",
+      "status": "開業済み",
+      "bud": "約600億円",
+      "budget": "約600億円",
+      "budN": 0.06,
+      "budget_tn_yen": 0.06,
+      "tl": "2023年 開業",
+      "timeline": "2023年 開業",
+      "pr": "ファイターズ スポーツ&エンターテイメント",
+      "proponent": "ファイターズ スポーツ&エンターテイメント",
+      "desc": "日本ハムの新球場を核とした複合まちづくり。スタジアムを中心に居住・商業・宿泊が広がる地域活性化モデル。",
+      "tags": [
+        "ボールパーク",
+        "北海道",
+        "地域活性化"
+      ],
+      "at": [
+        42.994,
+        141.573
+      ],
+      "lat": 42.994,
+      "lng": 141.573,
+      "route": null,
+      "link": "https://www.google.com/search?q=%E5%8C%97%E6%B5%B7%E9%81%93%E3%83%9C%E3%83%BC%E3%83%AB%E3%83%91%E3%83%BC%E3%82%AF%20F%E3%83%93%E3%83%AC%E3%83%83%E3%82%B8%EF%BC%88%E3%82%A8%E3%82%B9%E3%82%B3%E3%83%B3%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%E3%83%89%EF%BC%89%20%E3%83%95%E3%82%A1%E3%82%A4%E3%82%BF%E3%83%BC%E3%82%BA%20%E3%82%B9%E3%83%9D%E3%83%BC%E3%83%84%26%E3%82%A8%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%86%E3%82%A4%E3%83%A1%E3%83%B3%E3%83%88%20%E5%85%AC%E5%BC%8F",
+      "link_direct": false,
+      "link_label": "ファイターズ スポーツ&エンターテイメント公式情報を検索"
+    },
+    {
+      "cat": "tourism",
+      "category_ja": "観光・地域活性化",
+      "name": "ジブリパーク（愛知・長久手）",
+      "status": "全エリア開業",
+      "bud": "数百億円規模",
+      "budget": "数百億円規模",
+      "budN": 0.05,
+      "budget_tn_yen": 0.05,
+      "tl": "2022年〜2024年 順次開業",
+      "timeline": "2022年〜2024年 順次開業",
+      "pr": "愛知県、スタジオジブリ",
+      "proponent": "愛知県、スタジオジブリ",
+      "desc": "愛・地球博記念公園内に整備されたジブリ世界のテーマパーク。中部圏のインバウンド・観光需要を牽引する。",
+      "tags": [
+        "テーマパーク",
+        "愛知",
+        "インバウンド"
+      ],
+      "at": [
+        35.183,
+        137.08
+      ],
+      "lat": 35.183,
+      "lng": 137.08,
+      "route": null,
+      "link": "https://ghibli-park.jp/",
+      "link_direct": true,
+      "link_label": "愛知県公式サイト"
+    }
+  ]
+}
